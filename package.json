@@ -1,0 +1,27 @@
+{
+  "name": "upmys-generador-formatos",
+  "description": "Generador de formularios universitarios en formato DOCX",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@11.10.0",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json"
+  },
+  "dependencies": {
+    "@lucide/svelte": "latest",
+    "@sveltejs/adapter-static": "latest",
+    "@sveltejs/kit": "latest",
+    "@tailwindcss/vite": "latest",
+    "docx": "^9.7.1",
+    "svelte": "latest",
+    "tailwindcss": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "svelte-check": "latest"
+  }
+}
