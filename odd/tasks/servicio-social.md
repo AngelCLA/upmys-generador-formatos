@@ -85,7 +85,7 @@ Students need to generate the official Servicio Social documents without manuall
   - Route: delegated direct (writer trigger: new route plus registry and README edits).
   - Source: `05. Terminación del SS-UPMyS (1).docx` supplied by the user.
   - Scope: Arial 12 pt letter matching the source's two-page flow, with a right-aligned place/date line, Rector addressee, right-aligned `At'n Dr. Abraham Hi Rivera` copy line, justified body with the student, career, service period, organization, project, and fixed 480 hours, five bullet activity slots, `A t e n t a m e n t e.`, signature line with responsible name, position, and company address, and the bold letterhead note. No logo, header, footer, or page numbers. The signature block is kept together and flows to page 2 when needed.
-  - Evidence: `src/routes/servicio-social/terminacion/+page.svelte`; `pnpm check` 0 errors/0 warnings; `pnpm build` succeeded; Word COM smoke test produced 293 words in 2 pages with the complete signature block on page 2, no header/footer, and the expected margins.
+  - Evidence: `src/routes/servicio-social/terminacion/+page.svelte`; `pnpm check` 0 errors/0 warnings; `pnpm build` succeeded; Word COM smoke test produced 293 words in 2 pages with the complete signature block on page 2, no header/footer, and the expected margins; committed in `38bc15f`.
 - [x] **SS-16** Register format 05 in `servicioSocialForms` and update `README.md`.
   - Route: delegated direct (same writer work unit as SS-15).
   - Evidence: `src/lib/data/forms.js`, `README.md`.
@@ -166,3 +166,4 @@ Students need to generate the official Servicio Social documents without manuall
 - 2026-10-21: Format 05 work unit started on branch `feat/servicio-social-terminacion`.
 - 2026-10-21: SS-15/SS-16/SS-17 implemented and verified. `pnpm check`: 0 errors, 0 warnings. `pnpm build`: succeeded and wrote the static site. Parent corrections preserved the source's two blank lines before `Sin otro particular` and added `keepNext`/`keepLines` so the signature block does not split across pages. A Word COM smoke test of the generated `.docx` reported 2 pages and 293 words, kept the signature line, name, position, address, and note together on page 2, and confirmed no header/footer plus the source margins. Manual UI export remains pending.
 - 2026-10-21: Format 05 source itself is 2 pages in Word; the generated layout follows that flow. Do not force a one-page fit without a user decision.
+- 2026-10-21: Format 05 work unit committed in `38bc15f` (458-line route, registry, README, and task-doc updates). Manual UI export remains pending.
