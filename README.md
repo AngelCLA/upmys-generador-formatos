@@ -35,6 +35,7 @@ Una aplicación web para generar documentos en formato Word a partir de formular
 | Formato | Descripción | Tipo |
 |---------|-------------|------|
 | **01 Solicitud del PSS** | Solicitud de inscripción al Programa Institucional de Servicio Social | Local |
+| **02 Aceptación de SS** | Carta de aceptación del organismo receptor para el Servicio Social | Local |
 
 ## Tecnologías Utilizadas
 
@@ -77,7 +78,8 @@ upmys-generador-formatos/
 │       │   ├── solicitud/
 │       │   └── terminacion/
 │       └── servicio-social/
-            └── solicitud/
+│           ├── aceptacion/
+│           └── solicitud/
 ├── static/                   # Archivos estáticos
 ├── package.json
 ├── svelte.config.js

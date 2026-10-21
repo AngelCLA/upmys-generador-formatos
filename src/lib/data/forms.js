@@ -75,6 +75,15 @@ export const servicioSocialForms = [
     badge: 'Formulario local',
     badgeIcon: FileCheck,
     badgeType: 'local'
+  },
+  {
+    href: '/servicio-social/aceptacion',
+    icon: Handshake,
+    title: 'Aceptación de SS',
+    description: 'Formato 02. Carta de aceptación del organismo receptor para el Servicio Social.',
+    badge: 'Formulario local',
+    badgeIcon: FileCheck,
+    badgeType: 'local'
   }
 ];
 
