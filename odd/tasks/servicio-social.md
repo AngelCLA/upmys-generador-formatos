@@ -33,7 +33,7 @@ Students need to generate the official Servicio Social documents without manuall
 
 - Strategy: `ask-on-risk` (default). No pull request requested yet.
 - Forecast at creation: about 400 authored changed lines for the first format plus module wiring. The feature will exceed 400 lines across all formats; revisit the strategy before opening a PR.
-- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
+- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). Format 03 adds about 638 source lines (625 route lines plus registry, utility, and README edits), bringing the running total to about 1,310 source lines (about 1,410 including this task document). The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
 
 ## Tasks
 
@@ -60,7 +60,17 @@ Students need to generate the official Servicio Social documents without manuall
 - [x] **SS-07** Register format 02 in `servicioSocialForms` and update `README.md`.
   - Route: delegated direct (same writer work unit as SS-06).
   - Evidence: `src/lib/data/forms.js`, `README.md`.
-- [ ] **SS-08+** Pending: additional official formats supplied by the user.
+- [x] **SS-08** Implement the "Informe Periódico de SS" (format 03) route with a three-step form, live preview, and DOCX export.
+  - Route: delegated direct (writer trigger: new route plus shared utility, registry, README, and feature-doc edits).
+  - Source: `03. Reporte_mensual_SS UPMyS.docx` supplied by the user.
+  - Scope: Times New Roman report with UPMYS logo, title block, place/date, ten-row data table, report-number and hours line, signature block, page-number footer, activities table, and observations table. Page 1 holds the main form; page 2 starts with the activities and observations tables.
+- [x] **SS-09** Add page-number footer forwarding to `exportToDocx` and register format 03 in `servicioSocialForms` and `README.md`.
+  - Route: delegated direct (same writer work unit as SS-08).
+  - Evidence: `src/lib/utils/exportWord.js`, `src/lib/data/forms.js`, `README.md`.
+- [x] **SS-10** Verify format 03 with `pnpm check`, `pnpm build`, and a DOCX footer-field inspection.
+  - Route: parent verification after the writer returns.
+  - Evidence: `pnpm check` 0 errors/0 warnings; `pnpm build` wrote the static site; footer smoke test produced `footer1.xml` with `PAGE` and `NUMPAGES` fields and a `footerReference` in `document.xml`.
+- [ ] **SS-11+** Pending: additional official formats supplied by the user.
   - Route: to be decided when the sources arrive.
 
 ## Acceptance criteria
@@ -86,6 +96,14 @@ Students need to generate the official Servicio Social documents without manuall
 - The generated document contains no logo, no footer, and no red instructional note.
 - The letterhead and seal of the receiving organization are handled outside the generated document.
 
+### Format 03
+
+- `/servicio-social/informe` renders a three-step form and validates required fields before advancing.
+- The generated `.docx` reproduces the official report: UPMYS logo, university title, `Vinculación Social`, `INFORME PERIÓDICO DE SERVICIO SOCIAL`, italic place/date line, ten-row data table, report-number and hours line, advisor/student signature block, page-number footer, activities table, and observations table.
+- Page 1 contains the header, data table, report line, and signatures; page 2 starts with the activities table and ends with the observations table.
+- Instructional placeholders and template highlights (`Descripción general...`, `(elegir opción)`, `dd/mm/aaaa`, gray/yellow highlights) are not emitted.
+- `pnpm check` and `pnpm build` pass.
+
 ## Checks
 
 - `pnpm check`
@@ -98,3 +116,6 @@ Students need to generate the official Servicio Social documents without manuall
 - 2026-10-21: SS-01..SS-05 implemented in one delegated writer work unit. `pnpm check`: 0 errors, 0 warnings. `pnpm build`: succeeded. DOCX footer API smoke test: generated a 31,954-byte `.docx` with the JPEG footer. Manual Word/LibreOffice pagination check remains pending.
 - 2026-10-21: User feedback accepted: removed the SEP/escudo footer and one blank line before `ATENTAMENTE` in the generated letter. The footer asset and the temporary `exportToDocx` footer support were removed.
 - 2026-10-21: Format 02 implemented in one delegated writer work unit and verified with `pnpm check` (0 errors, 0 warnings) and `pnpm build` (succeeded). The body keeps only the student and responsible names bold, matching the source emphasis. Manual Word/LibreOffice pagination check remains pending.
+- 2026-10-21: Format 03 source parsed: Times New Roman 11 pt body, 24 pt title, 16 pt `Vinculación Social`, 14 pt report title, 0.98 in/1.18 in margins, double-bordered tables, UPMYS logo in the top-left, centered `Página X de Y` footer, page 2 activities and observations tables.
+- 2026-10-21: SS-08/SS-09 implemented in one delegated writer work unit. `pnpm check`: 0 errors, 0 warnings. `pnpm build`: succeeded. The route adds the Times New Roman report layout, two-page DOCX structure, live preview, footer forwarding in `exportToDocx`, and format 03 registry/README entries. Manual Word/LibreOffice pagination check remains pending.
+- 2026-10-21: SS-10 verified: `pnpm check` 0 errors/0 warnings; `pnpm build` succeeded; a DOCX footer smoke test produced `footer1.xml` with `PAGE` and `NUMPAGES` fields and a `footerReference` in `document.xml`. Manual Word/LibreOffice pagination remains pending.

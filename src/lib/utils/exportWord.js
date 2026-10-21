@@ -202,6 +202,8 @@ export async function exportToDocx(config) {
           margin: section.margin ? parseMarginString(section.margin) : margins,
         },
       },
+      headers: section.headers,
+      footers: section.footers,
       children: section.children || [],
     })),
   });

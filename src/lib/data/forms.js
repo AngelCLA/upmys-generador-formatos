@@ -84,6 +84,15 @@ export const servicioSocialForms = [
     badge: 'Formulario local',
     badgeIcon: FileCheck,
     badgeType: 'local'
+  },
+  {
+    href: '/servicio-social/informe',
+    icon: FileText,
+    title: 'Informe Periódico de SS',
+    description: 'Formato 03. Informe periódico de actividades, horas y observaciones del Servicio Social.',
+    badge: 'Formulario local',
+    badgeIcon: FileCheck,
+    badgeType: 'local'
   }
 ];
 
