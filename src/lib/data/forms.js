@@ -102,6 +102,15 @@ export const servicioSocialForms = [
     badge: 'Formulario local',
     badgeIcon: FileCheck,
     badgeType: 'local'
+  },
+  {
+    href: '/servicio-social/terminacion',
+    icon: FileCheck2,
+    title: 'Terminación de SS',
+    description: 'Formato 05. Carta de cumplimiento y terminación del Servicio Social.',
+    badge: 'Formulario local',
+    badgeIcon: FileCheck,
+    badgeType: 'local'
   }
 ];
 
