@@ -33,7 +33,7 @@ Students need to generate the official Servicio Social documents without manuall
 
 - Strategy: `ask-on-risk` (default). No pull request requested yet.
 - Forecast at creation: about 400 authored changed lines for the first format plus module wiring. The feature will exceed 400 lines across all formats; revisit the strategy before opening a PR.
-- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). Format 03 adds about 638 source lines (625 route lines plus registry, utility, and README edits), bringing the running total to about 1,310 source lines (about 1,410 including this task document). Format 04 is forecast at about 600 source lines (route plus registry and README), projecting about 1,910 source lines (about 2,010 including this task document). The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
+- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). Format 03 adds about 638 source lines (625 route lines plus registry, utility, and README edits), bringing the running total to about 1,310 source lines (about 1,410 including this task document). Format 04 adds about 1,312 source lines (1,294 route lines plus registry and README edits), bringing the running total to about 2,622 source lines (about 2,722 including this task document). Format 05 was forecast at about 350 source lines; it added about 468 (458 route lines plus registry, README, and task-document edits), bringing the running total to about 3,090 source lines. The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
 
 ## Tasks
 
@@ -70,17 +70,29 @@ Students need to generate the official Servicio Social documents without manuall
 - [x] **SS-10** Verify format 03 with `pnpm check`, `pnpm build`, and a DOCX footer-field inspection.
   - Route: parent verification after the writer returns.
   - Evidence: `pnpm check` 0 errors/0 warnings; `pnpm build` wrote the static site; footer smoke test produced `footer1.xml` with `PAGE` and `NUMPAGES` fields and a `footerReference` in `document.xml`.
-- [ ] **SS-11** Implement the "Evaluación del Servicio Social: perspectiva del Supervisor/Asesor" (format 04) route with a five-step form, live preview, and DOCX export.
+- [x] **SS-11** Implement the "Evaluación del Servicio Social: perspectiva del Supervisor/Asesor" (format 04) route with a five-step form, live preview, and DOCX export.
   - Route: delegated direct (writer trigger: new route plus registry and README edits).
   - Source: `04. Instrumento_Eval_ perspectiva Superv.doc` supplied by the user.
   - Scope: title block, five data fields, four evaluation sections with 21 questions, five open-answer boxes, signature line, place/date line, and closing thanks. The generated document follows the official two-page layout when open answers are concise.
-- [ ] **SS-12** Register format 04 in `servicioSocialForms` and update `README.md`.
+  - Evidence: `src/routes/servicio-social/evaluacion-supervisor/+page.svelte` (1,294 lines); committed in `b37d6ac`.
+- [x] **SS-12** Register format 04 in `servicioSocialForms` and update `README.md`.
   - Route: delegated direct (same writer work unit as SS-11).
-  - Evidence: `src/lib/data/forms.js`, `README.md`.
+  - Evidence: `src/lib/data/forms.js`, `README.md`; committed in `b37d6ac`.
 - [ ] **SS-13** Verify format 04 with `pnpm check`, `pnpm build`, and a DOCX layout/content inspection.
+  - Route: parent verification.
+  - Evidence: `pnpm check` and `pnpm build` pass for the shared worktree; the format 04 DOCX layout/content smoke test remains pending.
+- [x] **SS-15** Implement the "Terminación del SS" (format 05) route with a four-step form, live preview, and DOCX export.
+  - Route: delegated direct (writer trigger: new route plus registry and README edits).
+  - Source: `05. Terminación del SS-UPMyS (1).docx` supplied by the user.
+  - Scope: Arial 12 pt letter matching the source's two-page flow, with a right-aligned place/date line, Rector addressee, right-aligned `At'n Dr. Abraham Hi Rivera` copy line, justified body with the student, career, service period, organization, project, and fixed 480 hours, five bullet activity slots, `A t e n t a m e n t e.`, signature line with responsible name, position, and company address, and the bold letterhead note. No logo, header, footer, or page numbers. The signature block is kept together and flows to page 2 when needed.
+  - Evidence: `src/routes/servicio-social/terminacion/+page.svelte`; `pnpm check` 0 errors/0 warnings; `pnpm build` succeeded; Word COM smoke test produced 293 words in 2 pages with the complete signature block on page 2, no header/footer, and the expected margins.
+- [x] **SS-16** Register format 05 in `servicioSocialForms` and update `README.md`.
+  - Route: delegated direct (same writer work unit as SS-15).
+  - Evidence: `src/lib/data/forms.js`, `README.md`.
+- [x] **SS-17** Verify format 05 with `pnpm check`, `pnpm build`, and a DOCX layout/content inspection.
   - Route: parent verification after the writer returns.
-  - Evidence: pending.
-- [ ] **SS-14+** Pending: additional official formats supplied by the user.
+  - Evidence: `pnpm check` 0 errors/0 warnings; `pnpm build` wrote the static site; Word COM opened the smoke `.docx`, reported 2 pages and 293 words, kept the signature line, name, position, address, and note together on page 2, and confirmed no header/footer plus the source margins. The source itself is 2 pages in Word; the generated layout matches that flow.
+- [ ] **SS-18+** Pending: additional official formats supplied by the user.
   - Route: to be decided when the sources arrive.
 
 ## Acceptance criteria
@@ -123,6 +135,14 @@ Students need to generate the official Servicio Social documents without manuall
 - Obvious source typos and missing accents are corrected without changing the official meaning or institutional terms.
 - `pnpm check` and `pnpm build` pass.
 
+### Format 05
+
+- `/servicio-social/terminacion` renders a four-step form: student data, service period and organization, activities, and signatory.
+- The generated `.docx` reproduces the official letter: right-aligned place/date, Rector addressee, right-aligned `At'n Dr. Abraham Hi Rivera` / `Secretario Académico`, justified body with student, career, period, organization, project, and the fixed 480 hours, bullet activity list, `A t e n t a m e n t e.`, signature line with responsible name, position, and company address, and the bold letterhead note.
+- The generated document contains no logo, header, footer, or page numbers; the signature block stays together and may flow to page 2, matching the source's two-page flow.
+- The form validates required fields before advancing.
+- `pnpm check` and `pnpm build` pass.
+
 ## Checks
 
 - `pnpm check`
@@ -141,3 +161,8 @@ Students need to generate the official Servicio Social documents without manuall
 - 2026-10-21: User confirmed the generated format 03 `.docx` looks correct after opening it.
 - 2026-10-21: Actual worktree is on `main`; formats 01-03 are committed (`0bd74c9`, `c1bdc66`, `65163db`). Format 03 is committed but not agent-reviewed. Format 04 remains the next work unit; keep it separate from the format 03 commit.
 - 2026-10-21: Format 04 source parsed: Letter 612x792 pt with 0.98 in top/bottom and 1.18 in left/right margins; UPMYS logo is a floating body image at the top-left; header and footer are empty; 8 tables with a 7-column question layout; Arial 8 pt questions, Arial 7 pt options, Times New Roman body; four lettered sections and 21 questions; Q10 has a monthly amount, Q11 a frequency count, Q19 is yes/no, and Q5/Q12/Q17/Q20/Q21 are open answers. Design fixed for a five-step route, corrected accents, a uniform table layout, and a two-page DOCX without header, footer, or page numbers.
+- 2026-10-21: Format 04 implementation committed in `b37d6ac` (1,294-line route plus registry and README edits). Format 04 verification remains pending.
+- 2026-10-21: Format 05 source parsed: Letter 612x792 pt, 0.98 in top/bottom and 1.18 in left/right margins, Arial 12 pt throughout, right-aligned place/date and `At'n` block, justified body with a 708-twip first-line indent, five bullet blanks with 720/360 hanging indent, centered signature block, and a bold letterhead note. No header, footer, image, table, or page numbers. Word reports the source as 2 pages; the signature block starts on page 2.
+- 2026-10-21: Format 05 work unit started on branch `feat/servicio-social-terminacion`.
+- 2026-10-21: SS-15/SS-16/SS-17 implemented and verified. `pnpm check`: 0 errors, 0 warnings. `pnpm build`: succeeded and wrote the static site. Parent corrections preserved the source's two blank lines before `Sin otro particular` and added `keepNext`/`keepLines` so the signature block does not split across pages. A Word COM smoke test of the generated `.docx` reported 2 pages and 293 words, kept the signature line, name, position, address, and note together on page 2, and confirmed no header/footer plus the source margins. Manual UI export remains pending.
+- 2026-10-21: Format 05 source itself is 2 pages in Word; the generated layout follows that flow. Do not force a one-page fit without a user decision.

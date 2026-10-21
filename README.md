@@ -38,6 +38,7 @@ Una aplicación web para generar documentos en formato Word a partir de formular
 | **02 Aceptación de SS** | Carta de aceptación del organismo receptor para el Servicio Social | Local |
 | **03 Informe Periódico de SS** | Informe periódico de actividades, horas y observaciones del Servicio Social | Local |
 | **04 [Evaluación del Servicio Social](/servicio-social/evaluacion-supervisor)** | Perspectiva del Supervisor/Asesor | Local |
+| **05 [Terminación de SS](/servicio-social/terminacion)** | Carta de cumplimiento y terminación del Servicio Social | Local |
 
 ## Tecnologías Utilizadas
 
