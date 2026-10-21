@@ -33,7 +33,7 @@ Students need to generate the official Servicio Social documents without manuall
 
 - Strategy: `ask-on-risk` (default). No pull request requested yet.
 - Forecast at creation: about 400 authored changed lines for the first format plus module wiring. The feature will exceed 400 lines across all formats; revisit the strategy before opening a PR.
-- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). Format 03 adds about 638 source lines (625 route lines plus registry, utility, and README edits), bringing the running total to about 1,310 source lines (about 1,410 including this task document). The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
+- Running authored changed lines: about 672 source lines across formats 01-02 (about 772 including this task document). Format 03 adds about 638 source lines (625 route lines plus registry, utility, and README edits), bringing the running total to about 1,310 source lines (about 1,410 including this task document). Format 04 is forecast at about 600 source lines (route plus registry and README), projecting about 1,910 source lines (about 2,010 including this task document). The accumulated feature branch exceeds the advisory 400-line planning heuristic; the `ask-on-risk` delivery strategy applies when a pull request is planned.
 
 ## Tasks
 
@@ -70,7 +70,17 @@ Students need to generate the official Servicio Social documents without manuall
 - [x] **SS-10** Verify format 03 with `pnpm check`, `pnpm build`, and a DOCX footer-field inspection.
   - Route: parent verification after the writer returns.
   - Evidence: `pnpm check` 0 errors/0 warnings; `pnpm build` wrote the static site; footer smoke test produced `footer1.xml` with `PAGE` and `NUMPAGES` fields and a `footerReference` in `document.xml`.
-- [ ] **SS-11+** Pending: additional official formats supplied by the user.
+- [ ] **SS-11** Implement the "Evaluación del Servicio Social: perspectiva del Supervisor/Asesor" (format 04) route with a five-step form, live preview, and DOCX export.
+  - Route: delegated direct (writer trigger: new route plus registry and README edits).
+  - Source: `04. Instrumento_Eval_ perspectiva Superv.doc` supplied by the user.
+  - Scope: title block, five data fields, four evaluation sections with 21 questions, five open-answer boxes, signature line, place/date line, and closing thanks. The generated document follows the official two-page layout when open answers are concise.
+- [ ] **SS-12** Register format 04 in `servicioSocialForms` and update `README.md`.
+  - Route: delegated direct (same writer work unit as SS-11).
+  - Evidence: `src/lib/data/forms.js`, `README.md`.
+- [ ] **SS-13** Verify format 04 with `pnpm check`, `pnpm build`, and a DOCX layout/content inspection.
+  - Route: parent verification after the writer returns.
+  - Evidence: pending.
+- [ ] **SS-14+** Pending: additional official formats supplied by the user.
   - Route: to be decided when the sources arrive.
 
 ## Acceptance criteria
@@ -104,6 +114,15 @@ Students need to generate the official Servicio Social documents without manuall
 - Instructional placeholders and template highlights (`Descripción general...`, `(elegir opción)`, `dd/mm/aaaa`, gray/yellow highlights) are not emitted.
 - `pnpm check` and `pnpm build` pass.
 
+### Format 04
+
+- `/servicio-social/evaluacion-supervisor` renders a five-step form: general data, academic advising (Q1-Q5), service provider (Q6-Q12), values (Q13-Q17), and impact/closing (Q18-Q21 plus evaluation date).
+- The generated `.docx` reproduces the official evaluation: UPMYS logo at the top-left, university title, subtitle, instructions, cycle and name lines, organization and supervisor data, the four lettered sections, the 7-column question tables, the open-answer boxes, the signature line, the place/date line, and the closing thanks.
+- The generated document contains no header, no footer, and no page numbers. It aims for two pages when open answers are concise; long open answers may flow to additional pages.
+- The pre-checked `No (x)` in the source is not prefilled; answers are emitted only from the form state.
+- Obvious source typos and missing accents are corrected without changing the official meaning or institutional terms.
+- `pnpm check` and `pnpm build` pass.
+
 ## Checks
 
 - `pnpm check`
@@ -119,3 +138,6 @@ Students need to generate the official Servicio Social documents without manuall
 - 2026-10-21: Format 03 source parsed: Times New Roman 11 pt body, 24 pt title, 16 pt `Vinculación Social`, 14 pt report title, 0.98 in/1.18 in margins, double-bordered tables, UPMYS logo in the top-left, centered `Página X de Y` footer, page 2 activities and observations tables.
 - 2026-10-21: SS-08/SS-09 implemented in one delegated writer work unit. `pnpm check`: 0 errors, 0 warnings. `pnpm build`: succeeded. The route adds the Times New Roman report layout, two-page DOCX structure, live preview, footer forwarding in `exportToDocx`, and format 03 registry/README entries. Manual Word/LibreOffice pagination check remains pending.
 - 2026-10-21: SS-10 verified: `pnpm check` 0 errors/0 warnings; `pnpm build` succeeded; a DOCX footer smoke test produced `footer1.xml` with `PAGE` and `NUMPAGES` fields and a `footerReference` in `document.xml`. Manual Word/LibreOffice pagination remains pending.
+- 2026-10-21: User confirmed the generated format 03 `.docx` looks correct after opening it.
+- 2026-10-21: Actual worktree is on `main`; formats 01-03 are committed (`0bd74c9`, `c1bdc66`, `65163db`). Format 03 is committed but not agent-reviewed. Format 04 remains the next work unit; keep it separate from the format 03 commit.
+- 2026-10-21: Format 04 source parsed: Letter 612x792 pt with 0.98 in top/bottom and 1.18 in left/right margins; UPMYS logo is a floating body image at the top-left; header and footer are empty; 8 tables with a 7-column question layout; Arial 8 pt questions, Arial 7 pt options, Times New Roman body; four lettered sections and 21 questions; Q10 has a monthly amount, Q11 a frequency count, Q19 is yes/no, and Q5/Q12/Q17/Q20/Q21 are open answers. Design fixed for a five-step route, corrected accents, a uniform table layout, and a two-page DOCX without header, footer, or page numbers.

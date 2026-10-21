@@ -93,6 +93,15 @@ export const servicioSocialForms = [
     badge: 'Formulario local',
     badgeIcon: FileCheck,
     badgeType: 'local'
+  },
+  {
+    href: '/servicio-social/evaluacion-supervisor',
+    icon: ClipboardCheck,
+    title: 'Evaluación del Servicio Social',
+    description: 'Formato 04. Perspectiva del Supervisor/Asesor.',
+    badge: 'Formulario local',
+    badgeIcon: FileCheck,
+    badgeType: 'local'
   }
 ];
 

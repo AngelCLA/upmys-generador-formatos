@@ -37,6 +37,7 @@ Una aplicación web para generar documentos en formato Word a partir de formular
 | **01 Solicitud del PSS** | Solicitud de inscripción al Programa Institucional de Servicio Social | Local |
 | **02 Aceptación de SS** | Carta de aceptación del organismo receptor para el Servicio Social | Local |
 | **03 Informe Periódico de SS** | Informe periódico de actividades, horas y observaciones del Servicio Social | Local |
+| **04 [Evaluación del Servicio Social](/servicio-social/evaluacion-supervisor)** | Perspectiva del Supervisor/Asesor | Local |
 
 ## Tecnologías Utilizadas
 
@@ -80,6 +81,7 @@ upmys-generador-formatos/
 │       │   └── terminacion/
 │       └── servicio-social/
 │           ├── aceptacion/
+│           ├── evaluacion-supervisor/
 │           ├── informe/
 │           └── solicitud/
 ├── static/                   # Archivos estáticos
