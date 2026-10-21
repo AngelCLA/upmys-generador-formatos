@@ -68,13 +68,13 @@ export const estadiaForms = [
 
 export const servicioSocialForms = [
   {
-    href: '/servicio-social',
+    href: '/servicio-social/solicitud',
     icon: ClipboardList,
-    title: 'Servicio Social',
-    description: 'Espacio preparado para los formatos de Servicio Social.',
-    badge: 'Próximamente',
+    title: 'Solicitud del PSS',
+    description: 'Formato 01. Solicitud de inscripción al Programa Institucional de Servicio Social.',
+    badge: 'Formulario local',
     badgeIcon: FileCheck,
-    badgeType: 'external'
+    badgeType: 'local'
   }
 ];
 

@@ -1,5 +1,7 @@
 <script>
   import Header from '$lib/components/Header.svelte';
+  import DashboardCard from '$lib/components/DashboardCard.svelte';
+  import { servicioSocialForms } from '$lib/data/forms.js';
 </script>
 
 <svelte:head>
@@ -9,11 +11,20 @@
 <Header title="Servicio Social" showBack />
 
 <main class="main-content main-content-narrow">
-  <div class="form-card">
-    <div class="eyebrow" style="margin-bottom: 0.5rem;">Módulo en preparación</div>
-    <h1 class="page-title">Servicio Social</h1>
-    <p class="subtitle" style="margin-top: 0.5rem;">
-      Esta sección queda lista para agregar los 5 o 6 formatos de Servicio Social usando los mismos componentes de formularios multi-paso y exportación a Word.
+  <section style="margin-bottom: 2rem;">
+    <div class="eyebrow" style="margin-bottom: 0.5rem;">Módulo</div>
+    <h1 class="display-title">Servicio Social</h1>
+    <p class="subtitle" style="margin-top: 0.375rem; max-width: 620px;">
+      Formatos oficiales del Programa Institucional de Servicio Social.
     </p>
-  </div>
+  </section>
+
+  <section>
+    <div class="dashboard-grid">
+      {#each servicioSocialForms as form}
+        <DashboardCard {...form} />
+      {/each}
+    </div>
+    <p class="subtitle" style="margin-top: 1rem;">Más formatos se irán habilitando conforme se integren.</p>
+  </section>
 </main>

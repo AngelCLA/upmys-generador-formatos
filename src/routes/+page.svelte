@@ -44,7 +44,7 @@
         <div class="eyebrow">Módulo</div>
         <h2 class="page-title">Servicio Social</h2>
       </div>
-      <span class="badge">En preparación</span>
+      <span class="badge badge--primary">Activo</span>
     </div>
     <div class="dashboard-grid">
       {#each servicioSocialForms as form}
