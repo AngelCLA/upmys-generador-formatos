@@ -87,12 +87,12 @@
     }));
 
     children.push(new Paragraph({
-      children: [bold('Dr. Luis Miguel Flores Campaña')],
+      children: [bold('Dr. Abraham Hi Rivera')],
       spacing: { after: 0, line: lineSpacing },
     }));
 
     children.push(new Paragraph({
-      children: [new TextRun({ text: 'Rector de la Universidad Politécnica del Mar y la Sierra', font: 'Arial', size: 24 })],
+      children: [new TextRun({ text: 'Encargado de despacho de Rectoría de la Universidad Politécnica del Mar y la Sierra', font: 'Arial', size: 24 })],
       spacing: { after: 0, line: lineSpacing },
     }));
 
